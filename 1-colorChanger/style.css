@@ -1,37 +1,57 @@
 html {
-  margin: 0;
+    margin: 0;
 }
-body{
-  transition: all 0.3s ease-in-out;
+* {
+    box-sizing: border-box;
+}
+body {
+    transition: all 0.3s ease-in-out;
 }
 span {
-  display: block;
+    display: block;
 }
 .canvas {
-  margin: 100px auto 100px;
-  width: 80%;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.button {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    padding: 40px;
+    border: solid black 2px;
+    background-color: lightgray; /* Set your preferred background color */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 30px;
 }
 
-.button {
-  width: 100px;
-  height: 100px;
-  border: solid black 2px;
-  border-radius: 5px;
-  display: inline-block;
-  cursor: pointer;
+h2 span {
+    display: block; /* Make the span a block element */
+    margin-top: 10px; /* Add some top margin for spacing */
 }
 
 #grey {
-  background: grey;
+    background: grey;
 }
 
 #white {
-  background: white;
+    background: white;
 }
 #blue {
-  background: blue;
+    background: blue;
 }
 #yellow {
-  background: yellow;
+    background: yellow;
+}
+#disc {
+    padding-inline: 20px;
 }
