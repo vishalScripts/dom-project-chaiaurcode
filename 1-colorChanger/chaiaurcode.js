@@ -68,3 +68,5 @@ function speak(text) {
         speechSynthesis.speak(speech);
     }, 2000);
 }
+
+//project done
