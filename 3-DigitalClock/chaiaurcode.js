@@ -1,9 +1,9 @@
 console.log("hello world");
 
-function playSound(soundSrc) {
-    const audio = new Audio(soundSrc);
-    audio.play();
-}
+// function playSound(soundSrc) {
+//     const audio = new Audio(soundSrc);
+//     audio.play();
+// }
 setInterval(() => {
     const clockElem = document.getElementById("clock");
     let date = new Date().toLocaleTimeString();
