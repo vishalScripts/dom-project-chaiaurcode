@@ -4,6 +4,7 @@ const resultContainer = document.getElementsByClassName("resultParas")[0];
 const messages = document.getElementsByClassName("lowOrHi")[0];
 const prevGuessesElem = document.getElementsByClassName("guesses")[0];
 const remainGuess = document.getElementsByClassName("lastResult")[0];
+const wrapper = document.getElementById("wrapper");
 
 let randomNum = generateRandomNum();
 
@@ -80,7 +81,10 @@ function displayGuess(guess) {
 }
 
 function displayMessage(message) {
-    messages.innerHTML = message;
+    let messageElem = document.createElement("span");
+    messageElem.classList.add("red");
+    messageElem.innerHTML = message;
+    messages.appendChild(messageElem);
 }
 
 function endGame(winOrLoss) {
@@ -91,9 +95,12 @@ function endGame(winOrLoss) {
     mainBtn.innerHTML = "Restart";
     mainBtn.classList.add("crimson");
     if (winOrLoss) {
-        messages.innerHTML = `You Won <br> Guess is ${randomNum}`;
+        messages.classList.add("special");
+        wrapper.style.background = `url("https://i.pinimg.com/originals/cb/49/3c/cb493c4687425553507c309c069f6d39.gif") `;
+        messages.innerHTML = `<i class="red">Press Enter for new game</i><br>You Won <br> Guess is ${randomNum} <br> `;
     } else {
-        messages.innerHTML = `You lose <br> Guess is ${randomNum}`;
+        messages.classList.add("special");
+        messages.innerHTML = `<i style="color: #fff; font-size: 12px;">Press Enter for new game</i> <br> You lose <br> Guess is ${randomNum} <br>`;
     }
 }
 
@@ -104,8 +111,12 @@ function newGame() {
     mainBtn.classList.remove("crimson");
     randomNum = generateRandomNum();
     messages.innerHTML = "";
+    messages.classList.remove("special");
     remainGuess.innerHTML = 10 - numOfGuess;
+    wrapper.style.background = "none";
     while (prevGuessesElem.firstChild) {
         prevGuessesElem.removeChild(prevGuessesElem.firstChild);
     }
 }
+
+console.log(randomNum);

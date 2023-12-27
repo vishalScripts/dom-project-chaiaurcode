@@ -3,11 +3,10 @@ html {
 }
 
 body {
-    width: 300px;
-    max-width: 750px;
-    min-width: 480px;
+    width: 100%;
     margin: 0 auto;
-    background-color: #212121;
+    background: #333333 !important;
+    /* background: url("https://i.pinimg.com/originals/cb/49/3c/cb493c4687425553507c309c069f6d39.gif"); */
 }
 
 .lastResult {
@@ -40,7 +39,7 @@ button {
     border-radius: 10px;
     font-size: 20px;
     border-style: none;
-    margin-top: 50px;
+    margin-top: 25px;
     cursor: pointer;
     /* margin-left: 75px; */
 }
@@ -60,7 +59,7 @@ button {
     height: 50px;
     font-size: 30px;
     border-style: none;
-    margin-top: 25px;
+    margin-top: 15px;
 
     /* margin-left: 50px; */
     border: 5px solid #6c6d6d;
@@ -70,7 +69,7 @@ button {
 #guess {
     font-size: 55px;
     /* margin-left: 90px; */
-    margin-top: 120px;
+    /* margin-top: 120px; */
     color: #fff;
 }
 
@@ -83,9 +82,9 @@ button {
 #wrapper {
     box-sizing: border-box;
     text-align: center;
-    width: 450px;
+    width: 100%;
     height: 550px;
-    background-color: #474747;
+    /* background: url("https://i.pinimg.com/originals/cb/49/3c/cb493c4687425553507c309c069f6d39.gif"); */
     color: #fff;
     font-size: 25px;
 }
@@ -95,6 +94,7 @@ h1 {
 
     color: #fff;
     text-align: center;
+    margin-block-start: 0;
 }
 
 p {
@@ -107,3 +107,25 @@ p {
     flex-direction: row;
     gap: 2px;
 } */
+
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.special {
+    font-size: 25px;
+    color: chartreuse;
+}
+.red {
+    font-size: 16px;
+    color: crimson;
+}
+
+.lowOrHi {
+    margin-block-start: 0;
+}
+p {
+    margin-block-end: 0;
+}
