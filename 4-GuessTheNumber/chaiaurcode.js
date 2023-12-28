@@ -113,6 +113,8 @@ function newGame() {
     messages.innerHTML = "";
     messages.classList.remove("special");
     remainGuess.innerHTML = 10 - numOfGuess;
+    prevGuessesElem.innerHTML = "";
+    prevGuess = [];
     wrapper.style.background = "none";
     while (prevGuessesElem.firstChild) {
         prevGuessesElem.removeChild(prevGuessesElem.firstChild);
