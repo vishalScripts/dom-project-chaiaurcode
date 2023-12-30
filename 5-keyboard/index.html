@@ -1,47 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Event KeyCodes</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css" />
-    <style>
-      table,
-      th,
-      td {
-        border: 1px solid #e7e7e7;
-      }
-      .project {
-        background-color: #1c1c1c;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        height: 100vh;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Event KeyCodes</title>
+        <script
+            src="https://kit.fontawesome.com/c84f374fbb.js"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+        </style>
 
-      .color {
-        color: aliceblue;
-        display: flex;
-        flex-direction: row;
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a target="_blank" href="https://www.youtube.com/@chaiaurcode"
-        >Youtube channel</a
-      >
-    </nav>
-    <div class="project">
-      <div id="insert">
-        <div class="key">Press the key and watch magic</div>
-      </div>
-    </div>
+        <link rel="stylesheet" type="text/css" href="../styles.css" />
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid #e7e7e7;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            .project {
+                background-color: #1c1c1c;
+                color: #ffffff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                height: 100vh;
+                grid: 50px;
+                position: relative;
+            }
+            #insert {
+                margin-block-end: 5px;
+                max-width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                align-items: center;
+                padding: 2px;
+                justify-content: center;
+                /* font-family: "Poppins", sans-serif; */
+                font-family: "Roboto Condensed", sans-serif;
+            }
+            #insert div {
+                padding-inline: 5px;
+                max-height: 25px;
+                min-width: 25px;
+            }
+            .color {
+                color: aliceblue;
+                display: flex;
+                flex-direction: row;
+            }
+            .keyboard-container {
+                display: grid;
+                grid-template-columns: repeat(15, 40px);
+                grid-template-rows: repeat(5, 50px);
+                gap: 5px;
+                /* max-width: 600px; */
+                background-color: #cccccc0a;
+                padding: 20px;
+            }
 
-    <script src="./chaiaurcode.js"></script>
-  </body>
+            .key {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50px;
+                border: 1px solid #ccc;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                font-size: 16px;
+                opacity: 0.3;
+            }
+
+            .key:hover {
+                background-color: #eee;
+            }
+            #key-backspace,
+            #key-tab,
+            #key-capslock,
+            #key-enter,
+            #key-alt,
+            #key-broken {
+                grid-column-start: span 2;
+            }
+            #key-shift {
+                grid-column-start: span 3;
+            }
+            #key-space {
+                grid-column-start: span 7;
+            }
+
+            .red {
+                background: red;
+            }
+
+            .sound {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                background-color: #cccccc21;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 3px 5px;
+                transition: all 0.9s ease-in-out;
+            }
+            .sound:hover {
+                background-color: #cccccc49;
+            }
+            .sound i {
+                color: #eee;
+                transition: all 0.2s ease-in-out;
+            }
+            .sound:hover i {
+                color: #bdbcbc;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="/" aria-current="page">Home</a>
+            <a target="_blank" href="https://www.youtube.com/@chaiaurcode"
+                >Youtube channel</a
+            >
+        </nav>
+        <div class="project">
+            <div id="insert">
+                <!-- <p class="key">Press the key and watch magic</p> -->
+            </div>
+            <div class="keyboard-container">
+                <!-- keys -->
+            </div>
+            <div class="sound" id="sound">
+                <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+            </div>
+        </div>
+
+        <audio id="myAudio">
+            <source src="assets/keypress3.mp3" type="audio/mp3" />
+            Your browser does not support the audio element.
+        </audio>
+
+        <script
+            src="https://kit.fontawesome.com/c84f374fbb.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./chaiaurcode.js"></script>
+    </body>
 </html>
