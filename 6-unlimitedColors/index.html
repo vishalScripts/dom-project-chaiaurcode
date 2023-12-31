@@ -6,53 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Color changer</title>
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="../styles.css" />
-        <style>
-            body {
-                background-color: #212121;
-                color: #fff;
-                position: relative;
-            }
-            .grid {
-                position: absolute;
-                gap: 15px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, 50%);
-                width: 60%;
-                height: 135px;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-            }
-            .color {
-              background: transparent;
-              width: 100%;
-                border: none;
-                outline: none;
-                color: #fff;
-                text-align: center;
-                font-size: 18px;
-                cursor: pointer;
-            }
-
-            .colorBox-container{
-                grid-column: span 2;
-                backdrop-filter: blur(5px);
-                background: rgba(255, 255, 255, 0.226);
-                border-radius: 10px;
-                padding: 20px;
-                width: calc(50% - 15px);
-                align-self: center;
-                justify-self: center;
-                cursor: pointer;
-            }
-            button {
-                cursor: pointer;
-            }
-        </style>
     </head>
-    <body>
+    <body >
         <nav>
             <a href="/" aria-current="page">Home</a>
             <a target="_blank" href="https://www.youtube.com/@chaiaurcode"
@@ -60,13 +15,12 @@
             >
         </nav>
 
-        <h1>Start should change the Background color every second</h1>
         <div class="grid">
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <div class="colorBox-container">
-
+            <button id="start" class="button">Start</button>
+            <button id="stop" class="button">Stop</button>
+            <div class="colorBox-container uiverse">
               <input  class="color" id="colorBox" value="#212121" readonly></input>
+              <span class="tooltip ">coppied</span>
             </div>
         </div>
         <script src="chaiaurcode.js"></script>

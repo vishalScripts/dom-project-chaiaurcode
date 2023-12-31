@@ -29,9 +29,11 @@ function generateColor() {
         changeBg(str);
         // console.log(str);
         // console.log(randomNumber());
-    }, 1000);
+    }, 100);
     starBtn.disabled = true;
+    starBtn.classList.add("disabled");
     stopBtn.disabled = false;
+    stopBtn.classList.remove("disabled");
 }
 function randomNumber() {
     return Math.floor(Math.random() * 16);
@@ -40,7 +42,9 @@ function randomNumber() {
 function stopColorChange() {
     clearInterval(intervalId);
     starBtn.disabled = false;
+    starBtn.classList.remove("disabled")
     stopBtn.disabled = true;
+    stopBtn.classList.add("disabled");
 }
 
 const colorBox = document.getElementsByClassName("color")[0];
@@ -51,6 +55,12 @@ function changeBg(color) {
     document.body.style.background = `#${color}`;
 }
 colorBoxContainer.addEventListener("click", () => {
+    const tooltip = document.getElementsByClassName("tooltip")[0];
+    tooltip.classList.add("tooltip-visible");
+    setTimeout(() => {
+        tooltip.classList.remove("tooltip-visible");
+    }, 1000);
+
     console.log("coppied");
     colorBox.select();
     document.execCommand("copy");
