@@ -20,6 +20,12 @@ document.addEventListener("mousemove", (e) => {
     //! cursor.style.background = colors[Math.floor(Math.random() * colors.length)];
     cursor.style.background = generateColor();
     // console.log(generateColor());
+
+    const currentWidth = parseFloat(cursor.style.width) || 20;
+    const currentHeight = parseFloat(cursor.style.height) || 20;
+
+    cursor.style.width = `${currentWidth + 0.5}px`;
+    cursor.style.height = `${currentHeight + 0.5}px`;
 });
 
 function generateColor() {
