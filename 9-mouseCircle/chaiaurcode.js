@@ -17,7 +17,17 @@ document.addEventListener("mousemove", (e) => {
     const { clientX, clientY } = e;
     cursor.style.left = `${clientX}px`;
     cursor.style.top = `${clientY}px`;
-    cursor.style.background = colors[Math.floor(Math.random() * colors.length)];
+    //! cursor.style.background = colors[Math.floor(Math.random() * colors.length)];
+    cursor.style.background = generateColor();
+    // console.log(generateColor());
 });
 
-
+function generateColor() {
+    let color = "#";
+    const letters = "0123456789ABCDEF";
+    for (let i = 0; i < 6; i++) {
+        let randomNum = Math.floor(Math.random() * letters.length);
+        color += letters[randomNum];
+    }
+    return color;
+}
