@@ -1,8 +1,20 @@
 const url = "https://api.chucknorris.io/jokes/random";
 
-// handle this endpoint with XMLHttpRequest
+//*-=-=-=-=-=|| handle this endpoint with XMLHttpRequest ||
+const getJoke = async function () {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let response = JSON.parse(xhr.responseText);
+            displayJoke(response);
+        }
+    };
+    xhr.send();
+};
 
-// handle this endpoint with promises
+//*-=-=-=-=-=||handle this endpoint with promises ||
+/*
 const getJoke = async function () {
     try {
         let response = await fetch(url);
@@ -10,12 +22,12 @@ const getJoke = async function () {
             throw new Error("404 url not found!!");
         }
         let jokeData = await response.json();
-        await erase(); // Wait for erase to complete before displaying the new joke
         await displayJoke(jokeData);
     } catch (error) {
         displayJoke(null, error);
     }
 };
+*/
 
 const displayJokeElem = document.getElementById("display-joke");
 const btn = document.getElementById("getJoke");
@@ -23,6 +35,7 @@ const btn = document.getElementById("getJoke");
 let charIndex = displayJokeElem.innerHTML.length;
 
 async function displayJoke(joke, error) {
+    await erase();
     charIndex = 0;
     if (joke) {
         await type(joke.value);

@@ -12,6 +12,7 @@ body {
     font-size: 22px;
     font-family: "Playfair Display", serif;
     margin-block: 20px;
+    min-height: 25px;
 }
 
 /* .btn {
