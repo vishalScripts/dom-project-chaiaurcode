@@ -75,3 +75,6 @@ button:before {
 button:hover:before {
     transform: translateX(15em);
 }
+button:active {
+    background-color: red;
+}
