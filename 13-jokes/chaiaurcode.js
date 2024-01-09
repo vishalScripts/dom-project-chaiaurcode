@@ -1,8 +1,6 @@
 const url = "https://api.chucknorris.io/jokes/random";
-let requestId = 0;
 let blocked = false;
 
-//*-=-=-=-=-=|| handle this endpoint with XMLHttpRequest ||
 const getJokeByXHR = async function () {
     if (!blocked) {
         blocked = true;
@@ -13,18 +11,16 @@ const getJokeByXHR = async function () {
                 if (xhr.status == 200) {
                     let response = JSON.parse(xhr.responseText);
                     displayJoke(response);
-                    blocked = false;
                 } else {
                     displayJoke(null, "Error fetching joke");
                 }
+                blocked = false; // Move it outside the if-else block
             }
         };
         xhr.send();
     }
 };
-//*-=-=-=-=-=||handle this endpoint with promises ||
-/*
- */
+
 const getJokeByFetch = async function () {
     if (!blocked) {
         blocked = true;
@@ -34,12 +30,11 @@ const getJokeByFetch = async function () {
                 throw new Error("404 url not found!!");
             }
             let jokeData = await response.json();
-
             await displayJoke(jokeData);
-
-            blocked = false;
         } catch (error) {
             displayJoke(null, error);
+        } finally {
+            blocked = false; // Ensure that 'blocked' is reset even if an error occurs
         }
     }
 };
@@ -47,12 +42,12 @@ const getJokeByFetch = async function () {
 const displayJokeElem = document.getElementById("display-joke");
 const btn = document.getElementById("getJoke");
 
-let charIndex = displayJokeElem.innerHTML.length;
+let charIndex = 0;
 
 async function displayJoke(joke, error) {
     if (joke) {
         charIndex = 0;
-        displayJokeElem.innerHTML = joke.value;
+        await type(joke.value);
     } else {
         displayJokeElem.innerHTML = error;
     }
@@ -63,4 +58,22 @@ btn.addEventListener("click", () => {
     getJokeByXHR();
 });
 
-// handle the case of race condition
+let typing = false;
+async function type(sentence) {
+    if (!typing) {
+        displayJokeElem.innerHTML = "";
+        typing = true;
+        return new Promise((resolve) => {
+            const typeInterval = setInterval(() => {
+                if (charIndex < sentence.length) {
+                    displayJokeElem.innerHTML += sentence.charAt(charIndex);
+                    charIndex++;
+                } else {
+                    clearInterval(typeInterval);
+                    typing = false;
+                    resolve();
+                }
+            }, sentence.length / 100);
+        });
+    }
+}
