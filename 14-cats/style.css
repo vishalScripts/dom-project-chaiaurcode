@@ -72,12 +72,3 @@ img {
     right: 0px;
 }
 
-@media (max-width: 768px) {
-    .container {
-        width: 300px;
-        height: 70%;
-    }
-    .random_cats {
-        width: 300px;
-    }
-}

@@ -2,8 +2,9 @@ const url = "https://api.thecatapi.com/v1/images/search";
 const container = document.querySelector(".container");
 let width;
 const windowWidth = window.innerWidth;
-if (windowWidth <= 768) {
-    width = 300;
+if (windowWidth <= 510) {
+    width = window.innerWidth - 20;
+    container.style.width = `${width}px`;
 } else {
     width = 500;
 }
@@ -22,6 +23,7 @@ function showImg(imgUrl) {
     imgElement.src = imgUrl;
     imgElement.alt = "Random Cat";
     imgElement.classList.add("random_cats");
+    imgElement.style.width = `${width}`;
 
     catsContainer.appendChild(imgElement);
     imgCount = catsContainer.children.length - 1;
