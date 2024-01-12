@@ -1,5 +1,12 @@
 const url = "https://api.thecatapi.com/v1/images/search";
 const container = document.querySelector(".container");
+let width;
+const windowWidth = window.innerWidth;
+if (windowWidth <= 768) {
+    width = 300;
+} else {
+    width = 500;
+}
 
 document.querySelector(".btn").addEventListener("click", getImg);
 const catsContainer = document.getElementsByClassName("cats")[0];
@@ -18,7 +25,7 @@ function showImg(imgUrl) {
 
     catsContainer.appendChild(imgElement);
     imgCount = catsContainer.children.length - 1;
-    catsContainer.style.transform = `translateX(-${500 * imgCount}px)`;
+    catsContainer.style.transform = `translateX(-${width * imgCount}px)`;
 
     if (imgCount === 1) {
         createNavBtn();
@@ -33,13 +40,13 @@ function navigation(e) {
     let target = e.currentTarget;
     if (imgCount > 0 && target.classList.contains("prev")) {
         imgCount--;
-        catsContainer.style.transform = `translateX(-${500 * imgCount}px)`;
+        catsContainer.style.transform = `translateX(-${width * imgCount}px)`;
     } else if (
         imgCount < catsContainer.children.length - 1 &&
         target.classList.contains("next")
     ) {
         imgCount++;
-        catsContainer.style.transform = `translateX(-${500 * imgCount}px)`;
+        catsContainer.style.transform = `translateX(-${width * imgCount}px)`;
     }
 }
 
