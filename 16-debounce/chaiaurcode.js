@@ -50,5 +50,19 @@ function showData(data) {
         <p><span class="white">Gender:</span> ${user.gender}</p>
         <p><span class="white">Phone:</span> ${user.phone}</p>
         <p><span class="white">Location:</span> ${user.location.city}, ${user.location.country}</p>
+        <div class="circle"></div>
     `;
 }
+
+card.addEventListener("mousemove", (event) => {
+    const boundingRect = card.getBoundingClientRect();
+
+    const mouseX = event.clientX - boundingRect.left;
+    const mouseY = event.clientY - boundingRect.top;
+
+    const circle = document.getElementsByClassName("circle")[0];
+    circle.style.top = `${mouseY}px`;
+    circle.style.left = `${mouseX}px`;
+
+    console.log(`Mouse X: ${mouseX}, Mouse Y: ${mouseY}`);
+});
